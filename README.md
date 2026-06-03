@@ -66,3 +66,47 @@ Balanceada	11 — 100%		Función balanceada
 
 El oráculo constante retornó únicamente |00> en las 1024 mediciones. El oráculo balanceado nunca retornó |00>, confirmando el funcionamiento correcto del algoritmo.
 
+
+
+Checkpoint 3, Algoritmo de Grover
+
+
+
+Concepto
+
+
+
+El algoritmo de Grover busca un elemento marcado en una base de datos no estructurada con aceleración cuadrática respecto a la búsqueda clásica. Para n=2 qubits el espacio de búsqueda tiene 4 elementos (|00>, |01>, |10>, |11>) y el número óptimo de iteraciones es 1.
+
+El circuito tiene tres etapas: inicialización en superposición uniforme con Hadamard en todos los qubits, un oráculo de fase que invierte la amplitud del estado objetivo, y un difusor que aplica la inversión alrededor de la media para amplificar la probabilidad del estado marcado.
+
+
+
+Por qué 1 iteración es suficiente para n=2
+
+
+
+Con 2 qubits cada estado parte con amplitud 1/2. Tras una iteración del oráculo más el difusor, la amplitud del estado marcado se amplifica a 1 y las demás caen a 0. Esto es consecuencia directa de la geometría del espacio de Hilbert para n=2: el ángulo de rotación óptimo coincide exactamente con una sola iteración. Para n mayor se necesitarían aproximadamente (π/4)√N iteraciones.
+
+
+
+Resultado
+
+Se ejecutaron 1024 mediciones por cada estado objetivo.
+
+
+
+Estado buscado		Estado encontrado		Probabilidad	Resultado
+
+00			00				100.0%		CORRECTO 
+
+01			01				100.0%		CORRECTO
+
+10			10				100.0%		CORRECTO
+
+11			11				100.0%		CORRECTO
+
+
+
+Los 4 estados objetivo fueron encontrados con probabilidad del 100% en 1024 mediciones, superando el umbral mínimo requerido del 90%.
+
